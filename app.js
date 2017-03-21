@@ -33,7 +33,7 @@ app.use(function(err, req, res, next) {
 db.sync()
 	.then(function(){
 		console.log('db synced');
-		app.listen(3000, function(){
+		app.listen(3001, function(){
 			console.log("Listening on 3000")
 		})
 	})
