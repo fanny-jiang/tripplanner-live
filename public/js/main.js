@@ -27,12 +27,12 @@ $(function initializeMap () {
       featureType: 'road.highway',
       elementType: 'geometry.fill',
       stylers: [{ color: '#ef8c25' }, { lightness: 40 }]
-    }, 
+    },
     {
       featureType: 'road.highway',
       elementType: 'geometry.stroke',
       stylers: [{ visibility: 'off' }]
-    }, 
+    },
     {
       featureType: 'poi.park',
       elementType: 'geometry.fill',
@@ -49,28 +49,65 @@ $(function initializeMap () {
     styles: styleArr
   });
 
-  // const iconURLs = {
-  //   hotel: '/images/lodging_0star.png',
-  //   restaurant: '/images/restaurant.png',
-  //   activity: '/images/star-3.png'
-  // };
+  const iconURLs = {
+    hotel: '/images/lodging_0star.png',
+    restaurant: '/images/restaurant.png',
+    activity: '/images/star-3.png'
+  };
 
   function drawMarker (type, coords) {
     const latLng = new google.maps.LatLng(coords[0], coords[1]);
     const marker = new google.maps.Marker({
-      position: latLng
+      position: latLng,
+      icon: iconURLs.type
     });
     marker.setMap(currentMap);
   }
 
   function blueAddButton () {
     $("button[data-action='add']").click(function() {
-      var coordinates = [];
-      console.log($('select option:selected'));
+      // var coordinates = [];
+      var hotelName = $("select[data-type='hotels'] option:selected").val();
+
+      var hotelObj = hotels.find(function(element) {
+        return element.name === hotelName;
+      });
+
+      var coordinates = hotelObj.place.location;
+
+      drawMarker("hotel", coordinates);
     })
+
+    $("button[data-action='add']").click(function() {
+      // var coordinates = [];
+      var restaurantName = $("select[data-type='restaurants'] option:selected").val();
+
+      var restaurantObj = restaurants.find(function(element) {
+        return element.name === restaurantName;
+      });
+
+      var coordinates = restaurantObj.place.location;
+
+      drawMarker("restaurant", coordinates);
+    })
+
+    $("button[data-action='add']").click(function() {
+      // var coordinates = [];
+      var activityName = $("select[data-type='activities'] option:selected").val();
+
+      var activityObj = activities.find(function(element) {
+        return element.name === activityName;
+      });
+
+      var coordinates = activityObj.place.location;
+
+      drawMarker("activity", coordinates);
+    })
+
   }
   // drawMarker('hotel', [40.705137, -74.007624]);
   // drawMarker('restaurant', [40.705137, -74.013940]);
   // drawMarker('activity', [40.716291, -73.995315]);
+blueAddButton();
 
 });
