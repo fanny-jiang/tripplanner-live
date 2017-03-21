@@ -14,7 +14,7 @@
                         <select data-type="hotels">
 
 			</select>
-                        <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
+                        <button data-type="hotels" data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
                     </div>
                     <div>
                         <h4>Restaurants</h4>
@@ -23,7 +23,7 @@
 				<option>{{ r.name }}</option>
 				{% endfor %}-->
 			</select>
-                        <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
+                        <button data-type="restaurants" data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
                     </div>
                     <div>
                         <h4>Activities</h4>
@@ -32,7 +32,7 @@
 				<option>{{ activity.name }}</option>
 				{% endfor %}-->
 			</select>
-                        <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
+                        <button data-type="activities" data-action="add" class= btn btn-primary btn-circle pull-right">+</button>
                     </div>
                 </div>
             </div>
