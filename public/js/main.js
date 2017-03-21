@@ -63,8 +63,14 @@ $(function initializeMap () {
     marker.setMap(currentMap);
   }
 
-  drawMarker('hotel', [40.705137, -74.007624]);
-  drawMarker('restaurant', [40.705137, -74.013940]);
-  drawMarker('activity', [40.716291, -73.995315]);
+  function blueAddButton () {
+    $("button[data-action='add']").click(function() {
+      var coordinates = [];
+      console.log($('select option:selected'));
+    })
+  }
+  // drawMarker('hotel', [40.705137, -74.007624]);
+  // drawMarker('restaurant', [40.705137, -74.013940]);
+  // drawMarker('activity', [40.716291, -73.995315]);
 
 });

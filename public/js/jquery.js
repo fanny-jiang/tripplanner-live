@@ -24,8 +24,6 @@ $(function initializePlanner() {
         $("button[data-type='hotels'][data-action='add']").click(function() {
             var data = $("select[data-type='hotels'] option:selected").val()
             // create itinerary item div
-            console.log(data);
-            console.log($('ul.list-group').filter('.hotels'));
             $('ul.list-group.hotels').append(`<div class="itinerary-item"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
 
         });
@@ -43,8 +41,6 @@ $(function initializePlanner() {
             $('ul.list-group.activities').append(`<div class="itinerary-item"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
 
         })
-
-
 
     }
 

@@ -34,7 +34,7 @@ db.sync()
 	.then(function(){
 		console.log('db synced');
 		app.listen(3001, function(){
-			console.log("Listening on 3000")
+			console.log("Listening on 3001")
 		})
 	})
 	.catch(function(err){
