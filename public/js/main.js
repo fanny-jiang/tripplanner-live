@@ -59,13 +59,15 @@ $(function initializeMap () {
     const latLng = new google.maps.LatLng(coords[0], coords[1]);
     const marker = new google.maps.Marker({
       position: latLng,
-      icon: iconURLs.type
+      icon: iconURLs[type]
     });
     marker.setMap(currentMap);
   }
 
+var markedLocations = [];
+
   function blueAddButton () {
-    $("button[data-action='add']").click(function() {
+    $("button[data-type='hotels'][data-action='add']").click(function() {
       // var coordinates = [];
       var hotelName = $("select[data-type='hotels'] option:selected").val();
 
@@ -78,7 +80,7 @@ $(function initializeMap () {
       drawMarker("hotel", coordinates);
     })
 
-    $("button[data-action='add']").click(function() {
+    $("button[data-type='restaurants'][data-action='add']").click(function() {
       // var coordinates = [];
       var restaurantName = $("select[data-type='restaurants'] option:selected").val();
 
@@ -91,7 +93,7 @@ $(function initializeMap () {
       drawMarker("restaurant", coordinates);
     })
 
-    $("button[data-action='add']").click(function() {
+    $("button[data-type='activities'][data-action='add']").click(function() {
       // var coordinates = [];
       var activityName = $("select[data-type='activities'] option:selected").val();
 
@@ -105,9 +107,30 @@ $(function initializeMap () {
     })
 
   }
+
+  function removeMarker (type, coords) {
+    const latLng = new google.maps.LatLng(coords[0], coords[1]);
+    const marker = new google.maps.Marker({
+      position: latLng,
+      icon: iconURLs[type]
+    });
+    marker.setMap(null);
+  }
+
+  function removeRedButton() {
+    $('#itinerary').on('click', '.remove', function () {
+      $(this).parent().remove()
+    });
+
+
+    removeMarker(type, coordinates);
+  }
+
+
   // drawMarker('hotel', [40.705137, -74.007624]);
   // drawMarker('restaurant', [40.705137, -74.013940]);
   // drawMarker('activity', [40.716291, -73.995315]);
 blueAddButton();
+
 
 });

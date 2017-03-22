@@ -26,31 +26,38 @@ $(function initializePlanner() {
         //             </div>`)
         //     });
         // }
+        var hotelCounter = 0;
         $("button[data-type='hotels'][data-action='add']").click(function() {
             var data = $("select[data-type='hotels'] option:selected").val()
             // create itinerary item div
-            $('ul.list-group.hotels').append(`<div class="itinerary-item"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
+            $('ul.list-group.hotels').append(`<div class="itinerary-item hotel${hotelCounter++}"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
 
         });
-
+        var restCounter = 0;
         $("button[data-type='restaurants'][data-action='add']").click(function() {
             var data = $("select[data-type='restaurants'] option:selected").val()
             // create itinerary item div
-            $('ul.list-group.restaurants').append(`<div class="itinerary-item"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
+            $('ul.list-group.restaurants').append(`<div class="itinerary-item rest${restCounter++}"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
 
         });
-
+        var actCounter = 0;
         $("button[data-type='activities'][data-action='add']").click(function() {
             var data = $("select[data-type='activities'] option:selected").val()
             // create itinerary item div
-            $('ul.list-group.activities').append(`<div class="itinerary-item"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
+            $('ul.list-group.activities').append(`<div class="itinerary-item activity${actCounter++}"><span class="title">${data}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>`)
 
         })
+    }
 
+    function removeRedButtons() {
+        $('#itinerary').on('click', '.remove', function () {
+            $(this).parent().remove()
+        });
     }
 
     createOptionTags();
     blueAddButtons();
+    removeRedButtons();
 
 })
 
